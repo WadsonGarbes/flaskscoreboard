@@ -1,7 +1,8 @@
 from . import website
 from flask import render_template
+from flask_login import login_required
 
-
-@website.route("/")
-def home():
-    return render_template("website/home.html")
+@login_required
+@website.route("/painel")
+def dashboard():
+    return render_template("website/dashboard.html")
