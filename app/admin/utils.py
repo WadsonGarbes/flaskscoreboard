@@ -9,6 +9,6 @@ def admin_required(f):
         admin = current_user.is_admin
         if not admin:
             flash("Você precisa ser admin para acessar este recurso")
-            return redirect(url_for('website.home'))
+            return redirect(url_for('website.dashboard'))
         return f(*args, **kwargs)
     return decorated
