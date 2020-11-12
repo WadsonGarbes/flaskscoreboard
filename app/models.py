@@ -41,6 +41,10 @@ class Team(db.Model):
     name = db.Column(db.String(30), index=True, unique=True)
     acronym = db.Column(db.String(10), index=True, unique=True)
     local = db.Column(db.String(30), index=True)
+    points = db.Column(db.Integer, default=0, index=True)
+    victories = db.Column(db.Integer, default=0)
+    draws = db.Column(db.Integer, default=0)
+    losses = db.Column(db.Integer, default=0)
 
     def __repr__(self):
         return f"<Team ID: {self.id} - Team name: {self.name} - Team Acronym: {self.acronym}>"
@@ -54,8 +58,8 @@ class Match(db.Model):
     __tablename__ = "matches"
 
     id = db.Column(db.Integer, primary_key=True)
-    home_team = db.Column(db.String(30))
-    guest_team = db.Column(db.String(30))
+    home_team = db.Column(db.String(40))
+    guest_team = db.Column(db.String(40))
     home_points = db.Column(db.String(3))
     guest_points = db.Column(db.String(3))
 
