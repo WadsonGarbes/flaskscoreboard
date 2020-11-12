@@ -9,9 +9,9 @@ from app.models import Team, Match
 @login_required
 @website.route("/painel")
 def dashboard():
-    teams = Team.query.order_by(desc(Team.points)).all()
     matches = Match.query.all()
     distribute_points_win_loss_draw(matches)
+    teams = Team.query.order_by(desc(Team.points)).all()
     return render_template("website/dashboard.html", teams=teams)
 
 

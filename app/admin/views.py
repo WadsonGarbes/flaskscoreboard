@@ -37,7 +37,7 @@ def create_team():
         try:
             db.session.add(team)
             db.session.commit()
-            flash("Time cadastrado com sucesso!")
+            flash("Time cadastrado com sucesso!", "success")
         except IE:
             flash("O nome e/ou acrônimo já existem!", "error")
             db.session.rollback()
