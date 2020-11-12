@@ -17,7 +17,7 @@ def dashboard():
 
 @website.route("/")
 def index():
-    return render_template("website/home.html")
+    return render_template("website/home.html", title="Bem vindo!")
 
 
 @website.route("/detalhes/<int:id>")

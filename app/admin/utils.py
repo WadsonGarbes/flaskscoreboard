@@ -19,6 +19,9 @@ def distribute_points_win_loss_draw(obj):
     for match in obj:
         home_team = Team.query.filter_by(name=match.home_team).first()
         guest_team = Team.query.filter_by(name=match.guest_team).first()
+        if not home_team or not guest_team:
+            flash("Nenhuma partida encontrada")
+            return redirect(url_for("website.index"))
         if match.home_points > match.guest_points:
             home_team.points += 3
             home_team.victories += 1

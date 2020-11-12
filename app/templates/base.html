@@ -24,11 +24,15 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
           {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for("auth.logout")}}"><i class="fa fa-sign-out"></i> Sair</a></li>
-                {% else %}
+                {% if current_user.is_admin %}
+                    <li><a href="{{ url_for("admin.matchs")}}"><i class="fa fa-plus"></i> Criar partida </a></li>
+                    <li><a href="{{ url_for("admin.teams")}}"><i class="fa fa-plus"></i> Criar time </a></li>
+                {% endif %}
+              <li><a href="{{ url_for("auth.logout")}}"><i class="fa fa-sign-out"></i> Sair</a></li>
+          {% else %}
             <li><a href="{{ url_for("auth.register") }}"><i class="fa fa-plus"></i> Cadastrar</a></li>
             <li><a href="{{ url_for("auth.login") }}"><i class="fa fa-sign-in"></i> Login</a></li>
-                  {% endif %}
+          {% endif %}
               </ul>
           </div>
         </div>
@@ -36,7 +40,6 @@
     <div class="wrapper">
       {% block body %}
       {% endblock %}
-      <div class="push"></div>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script
